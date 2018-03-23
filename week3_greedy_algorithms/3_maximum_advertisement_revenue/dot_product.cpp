@@ -1,11 +1,14 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
+#include <functional>
 
 using std::vector;
 
 long long max_dot_product(vector<int> a, vector<int> b) {
   // write your code here
+  sort(a.begin() , a.end() , std::greater<int>{});
+  sort(b.begin() , b.end() , std::greater<int>{});
   long long result = 0;
   for (size_t i = 0; i < a.size(); i++) {
     result += ((long long) a[i]) * b[i];
