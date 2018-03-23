@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <iterator>
 #include <functional>
+#include <iomanip>
 #define max(a,b) (((a) > (b)) ? (a) : (b))
 #define min(a,b) (((a) < (b)) ? (a) : (b))
 
@@ -10,6 +11,19 @@ using std::vector;
 using std::cout;
 using std::cin;
 using std::endl;
+
+class Item
+{
+  public:
+  int value , weight;
+  Item(int v, int w)
+  {
+    value = v;
+    weight = w;
+  }
+
+  Item() {}
+};
 
 int getMax(vector<int> w , vector<int> value) 
 {
@@ -26,23 +40,31 @@ int getMax(vector<int> w , vector<int> value)
   return max;
 }
 
-double get_optimal_value(int capacity, vector<int> weights, vector<int> values) {
+bool cmp(struct Item a , struct Item b)
+{
+  return (double)a.value / a.weight > (double)b.value / b.weight;
+}
+
+double get_optimal_value(int capacity, vector<Item> items) {
   double value = 0.0;
+  int weight = 0;
   
   // write your code here
-  vector<int> A(weights.size() , 0);
+  std::sort(items.begin() , items.end() , cmp);
 
-  int n = weights.size();
-  for (int i = 0; i < n; ++i)
+  for (int i = 0; i < items.size(); ++i)
   {
-    if (capacity == 0)
-      return value;
-    int j = getMax(weights , values);
-    int a = min(weights[j] , capacity);
-    value += a * (float(values[j]) / weights[j]);
-    weights[j] -= a;
-    A[j] += a;
-    capacity -= a;
+    if (weight + items[i].weight <= capacity)
+    {
+      weight += items[i].weight;
+      value += items[i].value;
+    }
+    else
+    {
+      int r = capacity - weight;
+      value += items[i].value * ((float) r) / items[i].weight;
+      break;
+    }
   }
 
   return value;
@@ -52,15 +74,18 @@ int main() {
   int n;
   int capacity;
   cin >> n >> capacity;
-  vector<int> values(n);
-  vector<int> weights(n);
+  vector<Item> items;
+  items.resize(n);
   for (int i = 0; i < n; i++) {
-    cin >> values[i] >> weights[i];
+    int v , w;
+    cin >> v >> w;
+    items[i] = Item(v , w);
   }
 
-  double optimal_value = get_optimal_value(capacity, weights, values);
+  double optimal_value = get_optimal_value(capacity, items);
 
-  cout.precision(4);
+  cout << std::fixed;
+  cout << std::setprecision(4);
   cout << optimal_value << endl;
   return 0;
 }
