@@ -1,4 +1,4 @@
-"# Prerequisites 
+# Prerequisites 
 
 *.d 
 
@@ -30,4 +30,4 @@
 # Executables 
 *.exe 
 *.out 
-*.app" 
+*.app
