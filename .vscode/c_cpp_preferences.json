@@ -1,0 +1,52 @@
+{
+	"configurations": [
+		{
+			"name": "Mac",
+			"includePath": [
+				"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
+				"/usr/local/include",
+				"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.1.0/include",
+				"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
+				"/usr/include",
+				"${workspaceRoot}"
+			],
+			"defines": [],
+			"intelliSenseMode": "clang-x64",
+			"browse": {
+				"path": [
+					"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
+					"/usr/local/include",
+					"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.1.0/include",
+					"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
+					"/usr/include",
+					"${workspaceRoot}"
+				],
+				"limitSymbolsToIncludedHeaders": true,
+				"databaseFilename": ""
+			}
+		},
+		{
+			"name": "Linux",
+			"includePath": ["/usr/include", "/usr/local/include", "${workspaceRoot}"],
+			"defines": [],
+			"intelliSenseMode": "clang-x64",
+			"browse": {
+				"path": ["/usr/include", "/usr/local/include", "${workspaceRoot}"],
+				"limitSymbolsToIncludedHeaders": true,
+				"databaseFilename": ""
+			}
+		},
+		{
+			"name": "Win32",
+			"includePath": ["D:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.10.25017/include", "${workspaceRoot}"],
+			"defines": ["_DEBUG", "UNICODE"],
+			"intelliSenseMode": "msvc-x64",
+			"browse": {
+				"path": ["D:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.10.25017/include/include/*", "${workspaceRoot}"],
+				"limitSymbolsToIncludedHeaders": true,
+				"databaseFilename": ""
+			}
+		}
+	],
+	"version": 2
+}
