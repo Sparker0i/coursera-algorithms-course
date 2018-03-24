@@ -1,1 +1,1 @@
-"# coursera-algorithms-course" 
+# Algorithmic Toolbox
