@@ -1,24 +1,29 @@
 #include <iostream>
+using namespace std;
 
-int get_fibonacci_last_digit_naive(int n) {
-    if (n <= 1)
-        return n;
-
-    int previous = 0;
-    int current  = 1;
-
-    for (int i = 0; i < n - 1; ++i) {
-        int tmp_previous = previous;
-        previous = current;
-        current = tmp_previous + current;
-    }
-
-    return current % 10;
+int primer(int num)
+{
+    if (num % 10 < 10)
+        return num % 10;
+    return primer(num % 10);
 }
 
-int main() {
-    int n;
-    std::cin >> n;
-    int c = get_fibonacci_last_digit_naive(n);
-    std::cout << c << '\n';
+int fibonacci(int n)
+{
+    int F[n + 1];
+    F[0] = 0;
+    F[1] = 1;
+    for (int i = 2; i < n + 1; ++i)
+    {
+        F[i] = (F[i - 1] % 10) + (F[i - 2] % 10);
+        F[i] = primer(F[i]);
     }
+    return F[n];
+}
+
+int main()
+{
+    int N;
+    cin >> N;
+    cout << fibonacci(N) << endl;
+}
