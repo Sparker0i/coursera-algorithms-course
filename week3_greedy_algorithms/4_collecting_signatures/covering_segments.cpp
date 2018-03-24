@@ -1,6 +1,5 @@
 #include <algorithm>
 #include <iostream>
-#include <climits>
 #include <vector>
 
 using std::vector;
@@ -9,12 +8,25 @@ struct Segment {
   int start, end;
 };
 
+bool cmp(struct Segment a , struct Segment b)
+{
+  return a.end < b.end;
+}
+
 vector<int> optimal_points(vector<Segment> &segments) {
   vector<int> points;
   //write your code here
-  for (size_t i = 0; i < segments.size(); ++i) {
-    points.push_back(segments[i].start);
-    points.push_back(segments[i].end);
+  std::sort(segments.begin() , segments.end() , cmp);
+  int point = segments[0].end;
+  points.push_back(point);
+
+  for (int i = 1; i < segments.size(); ++i)
+  {
+    if (point < segments[i].start || point > segments[i].end)
+    {
+      point = segments[i].end;
+      points.push_back(point);
+    }
   }
   return points;
 }
