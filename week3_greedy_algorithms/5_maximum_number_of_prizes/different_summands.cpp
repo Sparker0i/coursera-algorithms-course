@@ -6,6 +6,23 @@ using std::vector;
 vector<int> optimal_summands(int n) {
   vector<int> summands;
   //write your code here
+  int value = n;
+  int k = 1;
+
+  while (true)
+  {
+    if (value <= 2 * k)
+    {
+      summands.push_back(value);
+      break;
+    }
+    else
+    {
+      summands.push_back(k);
+      value -= k;
+      k += 1;
+    }
+  }
   return summands;
 }
 
