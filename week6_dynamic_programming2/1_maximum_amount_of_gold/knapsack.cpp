@@ -11,28 +11,21 @@ bool greater(int a , int b)
 
 int optimal_weight(int W, vector<int> &w) 
 {
-    vector<vector<int> >K(w.size() , vector<int>(W + 1 , 0));
-    K.at(0).at(0) = 0;
+    vector<vector<int> >K(w.size() + 1 , vector<int>(W + 1 , 0));
 
-    for (int i = 1; i < K.at(0).size(); ++i)
+    for (int i = 0; i <= w.size(); ++i)
     {
-        if (w[0] <= i)
-            K.at(0).at(i) = w[i];
-        else
-            K.at(0).at(i) = 0;
-    }
-
-    for (int i = 1; i < K.size(); ++i)
-    {
-        for (int j = 1; j < K.at(i).size(); ++j)
+        for (int j = 0; j <= W; ++j)
         {
-            if (w[i] > j)
-                K.at(i).at(j) = K.at(i - 1).at(j);
+            if (i == 0 || j == 0)
+                K.at(i).at(j) = 0;
+            else if (w[i - 1] <= j)
+                K.at(i).at(j) = std::max(K.at(i - 1).at(j) , w[i - 1] + K.at(i - 1).at(j - w[i - 1]));
             else
-                K.at(i).at(j) = std::max(K.at(i - 1).at(j) , w[i] + K.at(i - 1).at(j - w[i]));
+                K.at(i).at(j) = K.at(i - 1).at(j);
         }
     }
-    return K.at(w.size() - 1).at(W);
+    return K.at(w.size()).at(W);
 }
 
 int main() 

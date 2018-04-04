@@ -2,10 +2,10 @@
     "command": "g++",
     "args": [
         "${file}",
-        "-o ${fileDirname}\\${fileBasenameNoExtension}.exe",
+        "-o ${fileDirname}\\${fileBasenameNoExtension}",
         "-std=c++11",
         "&&",
-        "${fileDirname}\\${fileBasenameNoExtension}.exe"
+        "${fileDirname}\\${fileBasenameNoExtension}"
       ],
     "isShellCommand": true,
     "showOutput": "always",
