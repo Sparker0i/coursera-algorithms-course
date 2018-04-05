@@ -8,7 +8,7 @@
 using std::vector;
 using std::string;
 
-int lcs(string X, string Y)
+int lcs(vector<int> &X, vector<int> &Y)
 {
     int m = X.size();
     int n = Y.size();
@@ -39,32 +39,22 @@ int main()
     int m;
     std::cin >> m;
 
-    vector<int> x(m);
+    vector<int> X(m);
     for (int i = 0; i < m; ++i)
     {
-        std::cin >> x[i];
-        // if (x[i] >= 10) 
-        //     x[i] %= 10;
+        std::cin >> X[i];
     }
     
     int n;
     std::cin >> n;
 
-    vector<int> y(n);
+    vector<int> Y(n);
     for (int i = 0; i < n; ++i)
     {
-        std::cin >> y[i];
-        // if (y[i] >= 10) 
-        //     y[i] %= 10;
+        std::cin >> Y[i];
     }
-    
-    std::stringstream X;
-    std::copy(x.begin(), x.end(), std::ostream_iterator<int>(X, ""));
 
-    std::stringstream Y;
-    std::copy(y.begin(), y.end(), std::ostream_iterator<int>(Y, ""));
-
-    std::cout << lcs(X.str().c_str() , Y.str().c_str()) << std::endl;
+    std::cout << lcs(X, Y) << std::endl;
 
     return 0;
 }
